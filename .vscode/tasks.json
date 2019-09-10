@@ -9,6 +9,18 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Build Lecture5",
+            "type": "shell",
+            "options":  {
+            "cwd":  "${workspaceFolder}/lecture5",
+            },
+            "command": "gcc -g helloworld.c -o helloworld.out",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
