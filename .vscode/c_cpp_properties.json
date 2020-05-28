@@ -4,7 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/src/glibc/glibc-2.23/include/**"
+                "/usr/src/glibc/glibc-2.27/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
