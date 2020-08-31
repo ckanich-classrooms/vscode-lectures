@@ -21,7 +21,7 @@ RUN apt-get update \
     && apt-get -y install git procps lsb-release \
     #
     # Install C++ tools
-    && apt-get -y install build-essential cmake cppcheck valgrind bsdmainutils glibc-source netcat \
+    && apt-get -y install build-essential cmake cppcheck valgrind bsdmainutils glibc-source netcat man socat\
     #
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \

@@ -1,7 +1,8 @@
+#include "sum.h"
 
-int array[2] = {1,2};
+int array[4] = {1,2,3,4};
 
 int main(){
-	int val = 42;
+	int val = sum(array, 2);
 	return val;
 }
