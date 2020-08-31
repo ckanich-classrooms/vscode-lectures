@@ -1,21 +1,29 @@
 #include <stdio.h>
 
 int not_defined_here;
-int everyone_can_touch_this = 42;
-static int only_i_can_touch_this = 43;
+char message[] = "hello world";
+static int invocations = 0;
 
-void hello_world(int increment){
+void hello_world(int increment)
+{
     int i;
-    static int invocations = 0;
-    char message [] = "hello, world\n";
-    for(i = 0; i < increment; i++){
+    static int first_time = 0;
+    for (i = 0; i < increment; i++)
+    {
         puts(message);
         invocations++;
     }
-    fprintf(stderr,"hello_world has now printed its message %d times.\n",invocations);
+    fprintf(stderr, "I have printed to the screen %d times.\n", invocations);
+    if (first_time == 0)
+    {
+        first_time++;
+        hello_world(1);
+    }
+    else
+        first_time++;
 }
 
-int main(){
-    hello_world(1);
-    hello_world(4);
+int main()
+{
+    hello_world(2);
 }
