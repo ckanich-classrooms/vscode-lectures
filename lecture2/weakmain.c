@@ -10,4 +10,3 @@ int main(){
   printf("%c%c\n",y,x);
   return 0;
 }
-

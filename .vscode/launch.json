@@ -3,13 +3,13 @@
     "configurations": [
 
         {
-            "name": "Launch Main",
+            "name": "debug weaksymbols",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/main.out",
+            "program": "${workspaceFolder}/lecture2/weaksymbols",
             "args": [],
             "stopAtEntry": true,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/lecture2",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -24,8 +24,7 @@
                     "text": "set substitute-path /build/glibc-LK5gWL /usr/src/glibc",
                     "ignoreFailures": false
                 }
-            ],
-            "preLaunchTask": "Build Main"
+            ]
         },
         {
             "name": "Launch Lecture5",
