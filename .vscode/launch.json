@@ -2,6 +2,32 @@
     "version": "0.2.0",
     "configurations": [
 
+     
+        {
+            "name": "Launch Lecture5",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/lecture5/helloworld.out",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Fix location of glibc source",
+                    "text": "set substitute-path /build/glibc-2ORdQG /usr/src/glibc",
+                    "ignoreFailures": false
+                }
+            ],
+            "preLaunchTask": "Build Lecture5"
+        },
         {
             "name": "debug weaksymbols",
             "type": "cppdbg",
@@ -25,31 +51,6 @@
                     "ignoreFailures": false
                 }
             ]
-        },
-        {
-            "name": "Launch Lecture5",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/lecture5/helloworld.out",
-            "args": [],
-            "stopAtEntry": true,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Fix location of glibc source",
-                    "text": "set substitute-path /build/glibc-OTsEL5 /usr/src/glibc",
-                    "ignoreFailures": false
-                }
-            ],
-            "preLaunchTask": "Build Lecture5"
         }
     ]
 }

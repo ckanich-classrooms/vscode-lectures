@@ -28,7 +28,7 @@
             "options": {
                 "cwd": "${workspaceFolder}/lecture5"
             },
-            "command": "gcc -g helloworld.c -o helloworld.out"
+            "command": "gcc -fno-pie -no-pie -g helloworld.c -o helloworld.out"
         }
     ]
 }
