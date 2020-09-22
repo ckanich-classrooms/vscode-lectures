@@ -9,19 +9,13 @@
 extern char **environ;
 
 int main(int argc, char **argv) {
-  char *args[2] = {"/bin/true", 0};
+  char *args[4] = {"/bin/echo", "hello","world", 0};
   int child_status;
   int result;
-  int iterations = atoi(argv[1]);
 
-  for (int i = 0; i < iterations; i++) {
-    malloc(4096);
+  if (0 != posix_spawn(&result, args[0], NULL, NULL, args, environ)) {
+    perror("spawn failed");
+    exit(1);
   }
-  for (int j = 0; j < 100; j++) {
-    if (0 != posix_spawn(&result, args[0], NULL, NULL, args, environ)) {
-      perror("spawn failed");
-      exit(1);
-    }
-    wait(&child_status);
-  }
+  wait(&child_status);
 }
