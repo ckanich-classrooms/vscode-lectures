@@ -19,5 +19,7 @@ int main() {
     perror("execv failed");
     exit(1);
   }
-  wait(&child_status);
+  else{
+    wait(&child_status);
+  }
 }
