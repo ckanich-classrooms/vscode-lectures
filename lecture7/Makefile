@@ -12,3 +12,6 @@ fork: fork.c
 
 spawn: spawn.c
 	gcc -Wall -o spawn spawn.c
+
+clean:
+	rm fork spawn test_fork test_spawn
