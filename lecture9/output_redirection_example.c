@@ -12,7 +12,6 @@ int main(void) {
   int fd, result, child_status;
   char *args[2] = {"ls", 0};
   posix_spawn_file_actions_t actions;
-  char* const param[] = {"/bin/ls", NULL};
 
   posix_spawn_file_actions_init(&actions);
   posix_spawn_file_actions_addopen(&actions, STDOUT_FILENO, "outfile",
