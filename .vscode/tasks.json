@@ -8,14 +8,19 @@
             "args": [
                 "-g",
                 "-Wall",
-                "${file}"
+                "${file}",
+                "-lpthread"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
             "problemMatcher": [
                 "$gcc"
-            ]
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "Build Main",

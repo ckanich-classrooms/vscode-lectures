@@ -2,6 +2,31 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch current file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/a.out",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Fix location of glibc source",
+                    "text": "set substitute-path /build/glibc-S9d2JN /usr/src/glibc",
+                    "ignoreFailures": false
+                }
+            ],
+            "preLaunchTask": "gcc build active file"
+        },
+        {
             "name": "Launch Lecture5",
             "type": "cppdbg",
             "request": "launch",

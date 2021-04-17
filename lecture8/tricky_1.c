@@ -7,14 +7,16 @@
 
 int counter = 2;
 
-void myHandler(int sig) {
+void myHandler(int sig)
+{
   counter++;
   printf("%d ", counter);
   fflush(stdout);
   exit(0);
 }
 
-int main() {
+int main()
+{
   int pid;
   signal(SIGUSR1, myHandler);
   printf("%d ", counter);
