@@ -18,8 +18,7 @@ void srand(unsigned new_seed)
 
 void *call_rand(void *dontcare)
 {
-    rand();
-    rand();
+    while(1)
     rand();
     return NULL;
 }
@@ -29,7 +28,6 @@ int main()
     pthread_t placeholder;
     srand(0);
     pthread_create(&placeholder, NULL, call_rand, NULL);
-    pthread_join(placeholder, NULL);
     printf("%u\n", rand());
     printf("%u\n", rand());
     printf("%u\n", rand());
