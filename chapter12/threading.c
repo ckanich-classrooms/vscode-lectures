@@ -4,12 +4,15 @@
 #include <unistd.h>
 #include <string.h>
 
+pthread_mutex_t lock;
+
 void *withdraw_cash(void *amount);
 void *deposit_cash(void *amount);
 int my_balance = 100;
 
 int get_balance()
 {
+    printf("about to ask for the balance, this will take a bit of time...\n");
     // pretend this is a database call that takes a bit of time
     usleep(250000); // 250ms
     return my_balance;
@@ -17,6 +20,7 @@ int get_balance()
 
 void set_balance(int new_balance)
 {
+    printf("about to set the balance, this will take a bit of time...\n");
     // pretend this is a database call that takes a bit of time
     usleep(250000); // 250ms
     my_balance = new_balance;
@@ -30,6 +34,9 @@ int main()
     int deposit_amount = 10;
     int create_result;
 
+    pthread_mutex_init(&lock, NULL);
+
+    printf("about to create the withdrawal thread\n");
     /* Create independent threads each of which will execute function */
     create_result = pthread_create(&thread1, NULL, withdraw_cash, &withdraw_amount);
     if (create_result != 0)
@@ -37,6 +44,7 @@ int main()
         printf("pthread_create failed: %s\n", strerror(create_result));
         return 0;
     }
+
 
     create_result = pthread_create(&thread2, NULL, deposit_cash, &deposit_amount);
     if (create_result != 0)
@@ -51,6 +59,7 @@ int main()
 
     pthread_join(thread1, NULL);
     pthread_join(thread2, NULL);
+
     printf("my balance is now %d\n", my_balance);
 
     return 0;
@@ -58,20 +67,24 @@ int main()
 
 void *deposit_cash(void *amount)
 {
+    pthread_mutex_lock(&lock);
     int balance = get_balance();
     printf("%lu: I am about to add %d to the balance of %d\n", pthread_self(), *(int *)amount, balance);
     balance += *(int *)amount;
     set_balance(balance);
+    pthread_mutex_unlock(&lock);
     printf("%lu: just stored my new balance of %d\n", pthread_self(), balance);
     return NULL;
 }
 
 void *withdraw_cash(void *amount)
 {
+    pthread_mutex_lock(&lock);
     int balance = get_balance();
     printf("%lu: I am about to subtract %d to the balance of %d\n", pthread_self(), *(int *)amount, balance);
     balance -= *(int *)amount;
     set_balance(balance);
+    pthread_mutex_unlock(&lock);
     printf("%lu: just stored my new balance of %d\n", pthread_self(), balance);
     return NULL;
 }

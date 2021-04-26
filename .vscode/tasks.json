@@ -7,6 +7,8 @@
             "command": "/usr/bin/gcc",
             "args": [
                 "-g",
+                "-o",
+                "${fileBasenameNoExtension}",
                 "-Wall",
                 "${file}",
                 "-lpthread"
@@ -20,6 +22,14 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
             }
         },
         {

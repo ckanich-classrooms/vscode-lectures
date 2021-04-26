@@ -53,4 +53,6 @@ int main()
 
     pthread_cond_init(&not_full, NULL);
     pthread_cond_init(&not_empty, NULL);
+
+    // produce and consume in your bounded buffer!
 }
